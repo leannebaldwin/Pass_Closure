@@ -38,11 +38,13 @@ def clean_weather_data(filename):
     sky_reduce = [['overcast' if (('BKN' in element) or ('OVC' in element) or ('VV' in element)) else 'clear'
                     for element in row] for row in sky_agg]
     overcast = pd.Series([True if 'overcast' in row else False for row in sky_reduce])
+    overcast.index = date.index
 
     # Cast the null value 'M' to 10.00 to enable the creation of a poor visibility series
     data.vsby[data.vsby == 'M'] = 10.00
     raw_visibility = data['vsby'].apply(float)
     poor_visibility = pd.Series([True if value < 0.50 else False for value in raw_visibility])
+    poor_visibility.index = date.index
 
     # Cast the null value 'M' to 0 to enable the creation of a windy series
     data.sknt[data.sknt == 'M'] = 0.00
