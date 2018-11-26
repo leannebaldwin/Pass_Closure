@@ -57,8 +57,9 @@ def clean_weather_data(filename):
 
     """Create the cleaned dataframe by concatenating the date, temp, precipitation, overcast, poor_visibility
     and windy series"""
-    cleaned_df = pd.concat([date, temp, precipitation, overcast, poor_visibility, windy], axis=1)
-    cleaned_df.columns = ['date', 'temp', 'precipitation', 'overcast', 'poor_visibility', 'windy']
+    df = pd.concat([date, temp, precipitation, overcast, poor_visibility, windy], axis=1)
+    df.columns = ['date', 'temp', 'precipitation', 'overcast', 'poor_visibility', 'windy']
+    cleaned_df = df[(df['date'] > '2006-12-31') & (df['date'] < '2018-04-03')]
     return cleaned_df
 
 def f(row):
