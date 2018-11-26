@@ -18,7 +18,7 @@ def clean_pass_data(filename):
     data.rename(columns={'INCIDENT END TIMES - DIRECTIONAL':'end_time'}, inplace=True)
 
     #use only dates from 2007-01-01 to match with available weather and traffic volume data
-    df = data[(data['date'] > '2006-12-31')]
+    df = data[(data['start_time'] > '2006-12-31')]
 
     #rename 'Delay Time Total' to delay
     df.rename(columns={'Delay Time Total':'delay'}, inplace=True)
