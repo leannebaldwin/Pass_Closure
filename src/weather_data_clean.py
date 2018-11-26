@@ -16,6 +16,10 @@ def clean_weather_data(filename):
     # Remove spaces from column names
     data.rename(columns=lambda x: x.replace(' ', ''), inplace=True)
 
+    # Only use the standard hourly weather reading at 56 mins past each hour
+    mask = data['date'].apply(lambda x: x[-2:] == '56')
+    data = data[mask]
+
     # Create a date series to be used in the clean dataframe
     date = pd.to_datetime(data['date'])
 
