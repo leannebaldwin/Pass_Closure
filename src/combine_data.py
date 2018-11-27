@@ -8,8 +8,9 @@ def get_pass_closure(date_time):
     input: datetime
     output: boolean
     """
-    for row in pass_closure_df:
-        if row.start_time < date_time < row.end_time:
+    start_end_times = list(zip(pass_closure_df.start_time, pass_closure_df.end_time))
+    for row in start_end_times:
+        if row[0] <= date_time <= row[1]:
             return True
     return False
 
@@ -18,6 +19,5 @@ def add_pass_closed(df):
     input: pandas dataframe
     output:pandas dataframe
     """
-    for row in df:
-        df['pass_closed'] = get_pass_closure(row.date)
+    df['pass_closed'] = df['date'].map(get_pass_closure)
     return df
