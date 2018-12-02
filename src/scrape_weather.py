@@ -20,13 +20,12 @@ def get_raw_forecast(day):
     page_link = 'https://weather.com/weather/tenday/l/USWA0413:1:US'
     page_response = requests.get(page_link, timeout=5)
     page_content = BeautifulSoup(page_response.content, "html.parser")
-    
-    print(page_content)
 
     web_predictions = []
     for i in range(0,105):
         predictions = page_content.find_all('td')[i].text
         web_predictions.append(predictions)
+        print(web_predictions)
     return web_predictions[(day*7 - 6):(day*7)]
 
 def get_raw_forecast_dataframe():
