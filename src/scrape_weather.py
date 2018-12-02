@@ -25,7 +25,6 @@ def get_raw_forecast(day):
     for i in range(0,105):
         predictions = page_content.find_all('td')[i].text
         web_predictions.append(predictions)
-        print(web_predictions)
     return web_predictions[(day*7 - 6):(day*7)]
 
 def get_raw_forecast_dataframe():
@@ -60,6 +59,7 @@ def get_hi_temperature(temp_string):
             temp += char
         else:
             break
+    #Add error handling for change in website that has -- for high temp for 'Tonight'
     if temp == '':
         return get_low_temperature(temp_string)
     return int(temp)

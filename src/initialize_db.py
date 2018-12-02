@@ -31,5 +31,5 @@ def fetch_every_hour():
 
 #Function call to start the endless loop
 if __name__ == '__main__':
-   #fetch_every_hour()
-   get_data_populate_db()
+   fetch_every_hour()
+   
