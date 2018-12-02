@@ -21,6 +21,8 @@ def get_raw_forecast(day):
     page_response = requests.get(page_link, timeout=5)
     page_content = BeautifulSoup(page_response.content, "html.parser")
     
+    print(page_content)
+
     web_predictions = []
     for i in range(0,105):
         predictions = page_content.find_all('td')[i].text
