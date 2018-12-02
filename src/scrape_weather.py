@@ -60,6 +60,8 @@ def get_hi_temperature(temp_string):
             temp += char
         else:
             break
+    if temp == '':
+        return get_low_temperature(temp_string)
     return int(temp)
 
 def get_low_temperature(temp_string):
