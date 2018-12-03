@@ -36,6 +36,7 @@ def aggregate_data_to_daily(df):
     input: pandas dataframe
     output: pandas dataframe
     """
+    df.index = df.date
     daily_df = df.resample("D").agg({'temp':'mean','precipitation':'max', 'overcast':'max', 'poor_visibility':'max', 'windy':'max', 'pass_closed':'max'})
     daily_df.dropna(inplace=True)
     return daily_df
