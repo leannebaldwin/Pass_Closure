@@ -22,6 +22,15 @@ def add_pass_closed(df):
     df['pass_closed'] = df['date'].map(get_pass_closure)
     return df
 
+def true_false_to_one_zero(df):
+    """take the combined df and change all the true/false values to 1/0
+    input: pandas dataframe
+    output: pandas dataframe
+    """
+    df[['precipitation', 'overcast', 'poor_visibility', 'windy', 'pass_closed']] = (
+        df[['precipitation', 'overcast', 'poor_visibility', 'windy', 'pass_closed']] == True).astype(int)
+    return df
+
 def aggregate_data_to_daily(df):
     """take the combined df and aggregate the data into daily rather than hourly data to be used to train the model
     input: pandas dataframe
