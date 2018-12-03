@@ -39,4 +39,6 @@ def aggregate_data_to_daily(df):
     df.index = df.date
     daily_df = df.resample("D").agg({'temp':'mean','precipitation':'max', 'overcast':'max', 'poor_visibility':'max', 'windy':'max', 'pass_closed':'max'})
     daily_df.dropna(inplace=True)
+    daily_df.reset_index(inplace=True)
+    daily_df.rename(columns={'index':'date'}, inplace=True)
     return daily_df
