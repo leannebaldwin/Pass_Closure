@@ -148,10 +148,13 @@ def snoqualmie_pass_prediction_components():
     forecasts_df['poor_visibility'] = forecasts_df['weather'].map(get_poor_visibility)
 
     #Drop unwanted columns
-    forecasts_df = forecasts_df.drop(['temp', 'high', 'low', 'precipitation', 'precip', 'wind', 'wind_int', 'weather', 'humidity'], axis=1)
+    forecasts_df = forecasts_df.drop(['temp','high','low','precipitation','precip','wind','wind_int','weather','humidity','date'], axis=1)
+
+    #Add date index to be new date column
+    forecasts_df.reset_index(inplace=True)
 
     #Rename columns
-    forecasts_df.rename(columns={'average':'temp', 'is_precipitating':'precipitation', }, inplace=True)
+    forecasts_df.rename(columns={'average':'temp', 'is_precipitating':'precipitation', 'index':'date' }, inplace=True)
 
     return forecasts_df
 
