@@ -17,7 +17,16 @@ def get_pass_closure(date_time):
 def add_pass_closed(df):
     """take the weather df and add a new column for whether or not the pass is closed at each date_time
     input: pandas dataframe
-    output:pandas dataframe
+    output: pandas dataframe
     """
     df['pass_closed'] = df['date'].map(get_pass_closure)
     return df
+
+def aggregate_data_to_daily(df):
+    """take the combined df and aggregate the data into daily rather than hourly data to be used to train the model
+    input: pandas dataframe
+    output: pandas dataframe
+    """
+    daily_df = df.resample("D").agg({'temp':'mean','precipitation':'max', 'overcast':'max', 'poor_visibility':'max', 'windy':'max', 'pass_closed':'max'})
+    daily_df.dropna(inplace=True)
+    return daily_df
