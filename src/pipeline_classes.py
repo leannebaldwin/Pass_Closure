@@ -34,4 +34,5 @@ class Featurizer(BaseEstimator, TransformerMixin):
         month_day_of_week = pd.get_dummies(month_day_of_week)
         month_day_of_week.index = df.index
         features = pd.concat([df, month_day_of_week], axis=1)
+        features.drop(['date'], axis=1, inplace=True)
         return features
