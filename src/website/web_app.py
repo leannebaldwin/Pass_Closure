@@ -9,7 +9,11 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/Snoqualmie'
 
 mongo = PyMongo(app)
 
-@app.route('/', methods=['GET'])  
+@app.route('/')
+def render():
+    return render_template('index.html', title = 'Snoqualmie Pass Closure Forecaster')
+
+'''@app.route('/', methods=['GET'])  
 def index():
     """Get the predictions and data to display"""
     pass_closure = mongo.db.docs
@@ -21,4 +25,4 @@ def index():
     """populate table to display"""
     table = render_template('table.html', rows = output)
     """Return the main page."""
-    return render_template('index.html', table = table)
+    return render_template('index.html', table = table)'''
