@@ -22,9 +22,8 @@ def get_training_data():
     """get the training data that used to train the model
     Output: X, y used to train the model"""
     df = get_data()
-    y = np.array(df['pass_closed'])
-    df= df.drop('pass_closed', axis=1)
-    X = np.array(df)
+    y = df['pass_closed']
+    X = df.drop('pass_closed', axis=1)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
     return X_train, X_test, y_train, y_test
 
