@@ -18,7 +18,8 @@ class Featurizer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         """tranform incoming training or test"""
         df = X.copy()
-        date_column = pd.Series(df.date)
+        df.index = df.date
+        date_column = pd.Series(df.index)
         month_day_of_week = pd.DataFrame({"year": date_column.dt.year,
                                         "month": date_column.dt.month, 
                                         "day": date_column.dt.day,
@@ -31,7 +32,6 @@ class Featurizer(BaseEstimator, TransformerMixin):
         month_day_of_week.dayofweek[month_day_of_week.dayofweek == 5] = 'Saturday'
         month_day_of_week.dayofweek[month_day_of_week.dayofweek == 6] = 'Sunday'
         month_day_of_week = pd.get_dummies(month_day_of_week)
-        df.reset_index()
         month_day_of_week.index = df.index
         features = pd.concat([df, month_day_of_week], axis=1)
         return features
