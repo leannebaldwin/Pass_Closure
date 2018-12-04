@@ -18,6 +18,7 @@ class Featurizer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         """tranform incoming training or test"""
         df = X.copy()
+        print(df)
         date_column = pd.Series(df.date)
         month_day_of_week = pd.DataFrame({"year": date_column.dt.year,
                                         "month": date_column.dt.month, 
