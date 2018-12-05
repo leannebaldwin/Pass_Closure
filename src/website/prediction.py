@@ -4,7 +4,7 @@ from pipeline_classes import Featurizer
 from sklearn.ensemble import RandomForestClassifier
 import pickle
 
-with open('../../data/pickled_pipe.pkl', 'rb') as f:
+with open('../../data/final_pickled_pipe.pkl', 'rb') as f:
     pipe = pickle.load(f)
 
 def get_predictions(df):
