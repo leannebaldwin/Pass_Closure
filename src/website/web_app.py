@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
-#import prediction
+import prediction
 
 app = Flask(__name__, static_url_path="")
 
@@ -25,4 +25,4 @@ def index():
     """populate table to display"""
     #table = render_template('table.html', rows = output)
     """Return the main page."""
-    return render_template('index.html', rows=output)'''
+    return render_template('index.html', rows=output)
