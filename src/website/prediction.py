@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+from pipeline_classes import Featurizer
+from sklearn.ensemble import RandomForestClassifier
 import pickle
 
 with open('../../data/pickled_pipe.pkl', 'rb') as f:
