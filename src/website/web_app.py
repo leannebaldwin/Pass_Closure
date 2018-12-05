@@ -11,7 +11,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def render():
-    return render_template('index.html', title = 'Snoqualmie Pass Closure Forecaster')
+    return render_template('index.html')
 
 '''@app.route('/', methods=['GET'])  
 def index():
