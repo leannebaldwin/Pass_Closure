@@ -22,7 +22,7 @@ def index():
     data = pass_closure.find()
     for row in data:
         pred = round(prediction.get_one_prediction(row), 2)
-        output.append({'date' : row['date'],  'probability of closure': pred})
+        output.append({'date' : row['date'],  'probability': pred})
     """populate table to display"""
     #table = render_template('table.html', rows = output)
     """Return the main page."""
