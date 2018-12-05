@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 def render():
     return render_template('index.html')
 
-'''@app.route('/', methods=['GET'])  
+@app.route('/probabilities', methods=['GET'])  
 def index():
     """Get the predictions and data to display"""
     pass_closure = mongo.db.docs
@@ -23,6 +23,6 @@ def index():
         pred = round(prediction.get_one_prediction(row), 2)
         output.append({'date' : row['date'],  'probability of closure': pred})
     """populate table to display"""
-    table = render_template('table.html', rows = output)
+    #table = render_template('table.html', rows = output)
     """Return the main page."""
-    return render_template('index.html', table = table)'''
+    return render_template('index.html', rows=output)'''
