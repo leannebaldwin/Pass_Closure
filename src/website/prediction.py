@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import pickle
 
-with open('../data/pickled_pipe.pkl', 'rb') as f:
+with open('../../data/pickled_pipe.pkl', 'rb') as f:
     pipe = pickle.load(f)
 
 def get_predictions(df):
@@ -10,7 +10,7 @@ def get_predictions(df):
     Input: pandas dataframe
     Output: numpy array of predictions
     """
-    forecast_probs = pipe.predict(df)
+    forecast_probs = pipe.predict_proba(df)
     return forecast_probs
 
 def get_one_prediction(row: dict) -> float:
