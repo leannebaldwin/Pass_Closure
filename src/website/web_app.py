@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
+from pipeline_classes import Featurizer
 import prediction
 
 app = Flask(__name__, static_url_path="")
