@@ -20,11 +20,12 @@ def get_pred():
     pass_closure = mongo.db.docs
     output = []
     data = pass_closure.find()
-    df = pd.DataFrame(data)
+    df = pd.DataFrame(list(data))
     df.drop(['_id'], axis=1, inplace=True)
-    df['predictions'] = round(prediction.get_predictions(df), 2)
-    for row in df:
-        output.append({'date' : row['date'],  'probability': row['predictions']})
+    predictions = prediction.get_predictions(df)
+    df['predictions'] = predictions[:,1]
+    df = df.round(2)
+    output = df.loc[:, ['date', 'predictions']] 
     return output
 
 output = get_pred()
