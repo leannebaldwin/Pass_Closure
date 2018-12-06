@@ -10,12 +10,11 @@ app.config['MONGO_URI'] = 'mongodb://localhost:27017/Snoqualmie'
 
 mongo = PyMongo(app)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def render():
     return render_template('index.html')
 
-@app.route('/probabilities', methods=['GET'])  
-def index():
+'''def get_pred():
     """Get the predictions and data to display"""
     pass_closure = mongo.db.docs
     output = []
@@ -23,7 +22,6 @@ def index():
     for row in data:
         pred = round(prediction.get_one_prediction(row), 2)
         output.append({'date' : row['date'],  'probability': pred})
-    """populate table to display"""
-    #table = render_template('table.html', rows = output)
-    """Return the main page."""
-    return render_template('index.html', rows=output)
+    return output
+
+output = get_pred()'''
