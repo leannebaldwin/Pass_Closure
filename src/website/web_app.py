@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
 from pipeline_classes import Featurizer
+import pandas as pd
 import prediction
 
 app = Flask(__name__, static_url_path="")
@@ -19,9 +20,11 @@ def get_pred():
     pass_closure = mongo.db.docs
     output = []
     data = pass_closure.find()
-    for row in data:
-        pred = round(prediction.get_one_prediction(row), 2)
-        output.append({'date' : row['date'],  'probability': pred})
+    df = pd.DataFrame(data)
+    df.drop(['_id'], axis=1, inplace=True)
+    df['predictions'] = round(prediction.get_predictions(df), 2)
+    for row in df:
+        output.append({'date' : row['date'],  'probability': row['predictions']})
     return output
 
 output = get_pred()
