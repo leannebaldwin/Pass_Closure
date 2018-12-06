@@ -92,21 +92,8 @@ Although you can use them, for a more unique website, replace these images with 
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <h2 class="section-heading">Snoqualmie Pass Closure Probabilities:</h2>
-                    {{output}}
-                    <table>
-                        <thead>
-                          <tr>
-                            <th>Date</th>
-                            <th>Probability</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for row in output %}
-                          <tr>
-                            <th>{{row['date']}}</th>
-                            <td>{{row['predictions']}}</td>
-                          </tr>
-                          {% endfor %}
+                    <div class="col-lg-8 col-lg-offset-2"></div>
+                    {{table|safe}}
                       </tbody>
                     </table>
                 </div>

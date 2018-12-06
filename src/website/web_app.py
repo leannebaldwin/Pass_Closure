@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 
 @app.route('/', methods=['GET'])
 def render():
-    return render_template('index.html', output=output)
+    return render_template('index.html', table = get_pred())
 
 def get_pred():
     """Get the predictions and data to display"""
@@ -25,7 +25,7 @@ def get_pred():
     predictions = prediction.get_predictions(df)
     df['predictions'] = predictions[:,1]
     df = df.round(2)
-    output = df.loc[:, ['date', 'predictions']] 
-    return output
+    output = df.loc[:, ['date', 'predictions']]
+    return output.to_html()
 
-output = get_pred()
+
