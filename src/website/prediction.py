@@ -21,6 +21,6 @@ def get_one_prediction(row: dict) -> float:
     Output: float
     """
     df = pd.DataFrame([row])
-    df.drop([0], axis=1, inplace=True)
+    df.drop(['_id'], axis=1, inplace=True)
     predictions = get_predictions(df)
     return predictions[0, 1]

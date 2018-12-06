@@ -14,7 +14,7 @@ mongo = PyMongo(app)
 def render():
     return render_template('index.html')
 
-'''def get_pred():
+def get_pred():
     """Get the predictions and data to display"""
     pass_closure = mongo.db.docs
     output = []
@@ -24,4 +24,4 @@ def render():
         output.append({'date' : row['date'],  'probability': pred})
     return output
 
-output = get_pred()'''
+output = get_pred()
