@@ -6,7 +6,7 @@ body {
 }
 
 a {
-    color: yellowgreen;
+    color: rgb(50, 169, 205);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -145,25 +145,6 @@ header .header-content .header-content-inner p {
     vertical-align: middle;
 }
 
-.item-1 {
-	background: url('../images/writing.jpg');
-	}
-	
-.item-2 {
-	background: url('../images/concert.jpg');
-	}
-	
-.item-3 {
-	background: url('../images/pencil_sharpener.jpg');
-	}
-		
-.item-1,
-.item-2,
-.item-3 {
-	background-size: cover;
-	background-position: 50% 50%;
-	}
-
 .page-footer {
 	text-align: center;
 	}
@@ -203,12 +184,12 @@ header .header-content .header-content-inner p {
 }
 
 .navbar-default .navbar-header .navbar-brand {
-    color: yellowgreen;
+    color: rgb(50, 169, 205);
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
 .navbar-default .navbar-header .navbar-brand:focus {
-    color: #eb3812;
+    color: #7012eb;
 }
 
 .navbar-default .nav > li>a,
@@ -218,12 +199,12 @@ header .header-content .header-content-inner p {
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: yellowgreen;
+    color: rgb(50, 169, 205);
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: yellowgreen!important;
+    color: rgb(50, 169, 205)!important;
     background-color: transparent;
 }
 
@@ -266,12 +247,12 @@ header .header-content .header-content-inner p {
 
     .navbar-default.affix .navbar-header .navbar-brand {
         letter-spacing: 0;
-        color: yellowgreen;
+        color: rgb(50, 169, 205);
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
     .navbar-default.affix .navbar-header .navbar-brand:focus {
-        color: #eb3812;
+        color: #7012eb;
     }
 
     .navbar-default.affix .nav > li>a,
@@ -281,7 +262,7 @@ header .header-content .header-content-inner p {
 
     .navbar-default.affix .nav > li>a:hover,
     .navbar-default.affix .nav>li>a:focus:hover {
-        color: yellowgreen;
+        color: rgb(50, 169, 205);
     }
 }
 
@@ -382,12 +363,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: yellowgreen;
-    background-color: yellowgreen;
+    border-color: rgb(50, 169, 205);
+    background-color: rgb(50, 169, 205);
 }
 
 .btn-primary .badge {
-    color: yellowgreen;
+    color: rgb(50, 169, 205);
     background-color: #fff;
 }
 
@@ -424,9 +405,9 @@ img::-moz-selection {
 }
 
 .text-primary {
-    color: yellowgreen;
+    color: rgb(50, 169, 205);
 }
 
 .bg-primary {
-    background-color: yellowgreen;
+    background-color: rgb(50, 169, 205);
 }
