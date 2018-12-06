@@ -23,9 +23,9 @@ def get_pred():
     df = pd.DataFrame(list(data))
     df.drop(['_id'], axis=1, inplace=True)
     predictions = prediction.get_predictions(df)
-    df['predictions'] = predictions[:,1]
+    df['probabilities'] = predictions[:,1]
     df = df.round(2)
-    output = df.loc[:, ['date', 'predictions']]
-    return output.to_html()
+    output = df.loc[:, ['date', 'probabilities']]
+    return output.to_html(index=False)
 
 
