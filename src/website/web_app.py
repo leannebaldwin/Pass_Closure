@@ -13,7 +13,7 @@ mongo = PyMongo(app)
 
 @app.route('/', methods=['GET'])
 def render():
-    return render_template('index.html')
+    return render_template('index.html', output=output)
 
 def get_pred():
     """Get the predictions and data to display"""
