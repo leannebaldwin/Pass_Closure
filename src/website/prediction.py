@@ -8,13 +8,15 @@ with open('../../data/final_pickled_pipe.pkl', 'rb') as f:
     pipe = pickle.load(f)
 
 def get_predictions(df):
-    """function to use pickled pipeline to get predictions on new scraped weather forecast data
+    """function to use pickled pipeline to get predictions on new scraped weather forecast data.
     Input: pandas dataframe
     Output: numpy array of predictions
     """
     forecast_probs = pipe.predict_proba(df)
     return forecast_probs
 
+"""No longer needed as for Featurizer to work properly with get_dummies need to get predictions on whole dataframe
+instead of 1 row at a time"""
 def get_one_prediction(row: dict) -> float:
     """make a prediction for a single event, i.e. a single row from Mongo DB where scraped weather data is stored
     Input: dict
