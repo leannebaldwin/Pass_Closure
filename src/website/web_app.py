@@ -2,9 +2,8 @@ from flask import Flask, render_template, Response
 from flask_pymongo import PyMongo
 from pipeline_classes import Featurizer
 import pandas as pd
-import io
-import base64
 import matplotlib.pyplot as plt
+import mpld3
 import prediction
 
 app = Flask(__name__, static_url_path="")
@@ -16,7 +15,7 @@ mongo = PyMongo(app)
 
 @app.route('/', methods=['GET'])
 def render():
-    return render_template('index.html', table = output.to_html(index=False))
+    return render_template('index.html', table = output.to_html(index=False), graph= html_graph)
 
 def get_pred():
     """Get the predictions and data to display"""
@@ -36,15 +35,15 @@ output = get_pred()
 @app.route('/plot')
 def build_plot():
     '''Create bar chart to display a visual representation of predicted probabilities'''
-    img = io.BytesIO()
+    fig, ax = plt.subplots()
     ax = output[['probabilities']].plot(kind='bar', title ="Probabilities", figsize=(15, 10), legend=True, fontsize=12)
     ax.set_xlabel("Date", fontsize=12)
     ax.set_ylabel("Probabilities", fontsize=12)
     ax.set_xticklabels(output['date'], rotation='vertical')
-    plt.savefig(img, format='png')
-    img.seek(0)
-    plot_url = base64.b64encode(img.getvalue()).decode()
-    return '<img src="data:image/png;base64,{}">'.format(plot_url)
+    html_graph = mpld3.fig_to_html(fig)
+    return html_graph
+
+html_graph = build_plot()
 
 
 
