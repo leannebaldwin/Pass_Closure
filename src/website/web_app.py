@@ -36,7 +36,7 @@ output = get_pred()
 @app.route('/plot')
 def build_plot():
     '''Create bar chart to display a visual representation of predicted probabilities'''
-    ax = output[['probabilities']].plot(kind='bar', title ="Probabilities", figsize=(15, 10), legend=True, fontsize=12)
+    ax = output[['probabilities']].plot(kind='bar', title ="Snoqualmie Pass Closure Probabilities", figsize=(15, 10), legend=True, fontsize=12)
     ax.set_xlabel("Date", fontsize=12)
     ax.set_ylabel("Probabilities", fontsize=12)
     ax.set_xticklabels(output['date'], rotation='vertical')
