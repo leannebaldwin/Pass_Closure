@@ -1,8 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Response
 from flask_pymongo import PyMongo
 from pipeline_classes import Featurizer
 import pandas as pd
+import io
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 import prediction
 
 app = Flask(__name__, static_url_path="")
@@ -31,10 +34,23 @@ def get_pred():
 
 output = get_pred()
 
-ax = output[['probabilities']].plot(kind='bar', title ="Probabilities", figsize=(15, 10), legend=True, fontsize=12)
-ax.set_xlabel("Date", fontsize=12)
-ax.set_ylabel("Probabilities", fontsize=12)
-ax.set_xticklabels(output['date'], rotation='vertical')
+@app.route('/plot.png')
+def plot_png():
+    '''Generate image for display on web page'''
+    fig = create_figure()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+def create_figure():
+    '''Create bar chart to display a visual representation of predicted probabilities'''
+    fig = Figure()
+    ax = output[['probabilities']].plot(kind='bar', title ="Probabilities", figsize=(15, 10), legend=True, fontsize=12)
+    ax.set_xlabel("Date", fontsize=12)
+    ax.set_ylabel("Probabilities", fontsize=12)
+    ax.set_xticklabels(output['date'], rotation='vertical')
+    ax.plot()
+    return fig
 
 
 
