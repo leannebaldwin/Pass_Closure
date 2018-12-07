@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import mpld3
 import prediction
+from io import BytesIO
 
 app = Flask(__name__, static_url_path="")
 
@@ -35,7 +36,7 @@ output = get_pred()
 @app.route('/plot')
 def build_plot():
     '''Create bar chart to display a visual representation of predicted probabilities'''
-    fig, ax = plt.subplots()
+    fig = plt.figure()
     ax = output[['probabilities']].plot(kind='bar', title ="Probabilities", figsize=(15, 10), legend=True, fontsize=12)
     ax.set_xlabel("Date", fontsize=12)
     ax.set_ylabel("Probabilities", fontsize=12)
