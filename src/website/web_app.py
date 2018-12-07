@@ -16,7 +16,7 @@ mongo = PyMongo(app)
 
 @app.route('/', methods=['GET'])
 def render():
-    return render_template('index.html', table = output.to_html(index=False), graph= html_graph)
+    return render_template('index.html', table = output.to_html(index=False), graph=graph)
 
 def get_pred():
     """Get the predictions and data to display"""
@@ -36,15 +36,16 @@ output = get_pred()
 @app.route('/plot')
 def build_plot():
     '''Create bar chart to display a visual representation of predicted probabilities'''
-    fig = plt.figure()
     ax = output[['probabilities']].plot(kind='bar', title ="Probabilities", figsize=(15, 10), legend=True, fontsize=12)
     ax.set_xlabel("Date", fontsize=12)
     ax.set_ylabel("Probabilities", fontsize=12)
     ax.set_xticklabels(output['date'], rotation='vertical')
-    html_graph = mpld3.fig_to_html(fig)
-    return html_graph
+    return plt.savefig('static/images/graph')
 
-html_graph = build_plot()
+graph = build_plot()
+    
+
+
 
 
 
