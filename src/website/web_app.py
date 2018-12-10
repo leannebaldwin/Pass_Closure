@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import mpld3
 import prediction
-from io import BytesIO
+from datetime import datetime as dt
 
 app = Flask(__name__, static_url_path="")
 
@@ -28,6 +28,7 @@ def get_pred():
     predictions = prediction.get_predictions(df)
     df['probabilities'] = predictions[:,1]
     df = df.round(2)
+    df['date'] = df.date.dt.strftime("%b %d")
     output = df.loc[:, ['date', 'probabilities']]
     return output
 
