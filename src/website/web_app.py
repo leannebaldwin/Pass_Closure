@@ -28,7 +28,7 @@ def get_pred():
     predictions = prediction.get_predictions(df)
     df['probabilities'] = predictions[:,1]
     df = df.round(2)
-    df['date'] = df.date.dt.strftime("%b %d")
+    df['date'] = df.date.dt.strftime("%a %b %d")
     output = df.loc[:, ['date', 'probabilities']]
     return output
 
