@@ -52,9 +52,9 @@ header .header-content .header-content-inner h1 {
 
 header .header-content .header-content-inner p {
     margin-bottom: 40px;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 300;
-    color: #eb12d9;
+    color: #eb1912;
 }
 
 @media(min-width:768px) {
@@ -413,6 +413,10 @@ img::-moz-selection {
 
 #header1 {
     font-size: 75px;
+}
+
+#header2 {
+    font-size: 30px;
 }
 
 
