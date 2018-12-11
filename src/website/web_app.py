@@ -3,7 +3,6 @@ from flask_pymongo import PyMongo
 from pipeline_classes import Featurizer
 import pandas as pd
 import matplotlib.pyplot as plt
-import mpld3
 import prediction
 from datetime import datetime as dt
 
