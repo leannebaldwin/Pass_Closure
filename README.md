@@ -34,8 +34,9 @@ I tried other models and features including Random Forest and Gradient Boosting.
 ## Accessing the project:
 
 Clone the repo, then run the following commands:
-* from the src folder: python initialize_db.py 
-    -Note because this is an hourly process the first data will be populated to the MongoDB after an hour
+* from the src folder: 
+    * python initialize_db.py 
+    * Note because this is an hourly process the first data will be populated to the MongoDB after an hour
 * from the website folder: 
     * export FLASK_APP=web_app.py
     * flask run
