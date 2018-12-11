@@ -21,7 +21,13 @@ The website was created using Flask and is hosted on AWS.
 
 ## Modeling:
 
+### Baseline:
 I used a logistic regression model as my baseline model with basic data of temperature and 1s/0s for: precipitation, overcast, poor-visibility, windy. 
 
 ![](/imgs/baseline_ROC.png)
+
+### Final Model:
+I tried other models and features including Random Forest and Gradient Boosting. Then chose a random forest model as my final model with aggregated daily data including year, month, day and get_dummies for day of week as well as the original data.
+
+![](/imgs/final_model_ROC.png)
 
