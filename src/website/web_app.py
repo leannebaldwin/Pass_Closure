@@ -2,9 +2,12 @@ from flask import Flask, render_template, Response
 from flask_pymongo import PyMongo
 from pipeline_classes import Featurizer
 import pandas as pd
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import prediction
 from datetime import datetime as dt
+from io import BytesIO
 
 app = Flask(__name__, static_url_path="")
 
@@ -33,16 +36,23 @@ def get_pred():
 
 output = get_pred()
 
-@app.route('/plot')
+@app.route('/plot.png')
 def build_plot():
     '''Create bar chart to display a visual representation of predicted probabilities'''
     ax = output[['probabilities']].plot(kind='bar', title ="Snoqualmie Pass Closure Probabilities", figsize=(15, 10), legend=True, fontsize=12)
     ax.set_xlabel("Date", fontsize=12)
     ax.set_ylabel("Probabilities", fontsize=12)
     ax.set_xticklabels(output['date'], rotation='vertical')
-    return plt.savefig('static/images/graph')
+    f = BytesIO()
+    plt.savefig(f)
+    image_data = f.getvalue()
+    response = make_response(image_data)
+    response.headers.set('Content-Type', 'image/png')
+    response.headers.set(
+        'Content-Disposition', 'attachment', filename='plot.png')
+    return response
 
-graph = build_plot()
+
     
 
 
