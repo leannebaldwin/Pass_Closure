@@ -12,4 +12,4 @@ The website was created using Flask and is hosted on AWS.
 
 ## High level solution diagram:
 
-![](https://github.com/leannebaldwin/Pass_Closure/imgs/high_level_solution.PNG)
+![](/imgs/high_level_solution.PNG)
