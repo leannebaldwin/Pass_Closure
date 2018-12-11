@@ -23,5 +23,5 @@ The website was created using Flask and is hosted on AWS.
 
 I used a logistic regression model as my baseline model with basic data of temperature and 1s/0s for: precipitation, overcast, poor-visibility, windy. 
 
-![](/imgs/baseline_ROC.PNG)
+![](/imgs/baseline_ROC.png)
 
