@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, make_response
 from flask_pymongo import PyMongo
 from pipeline_classes import Featurizer
 import pandas as pd
