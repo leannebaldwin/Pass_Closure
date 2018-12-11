@@ -18,6 +18,7 @@ The website was created using Flask and is hosted on AWS.
 
 * Historic weather data from NOAA using the ASOS (Automated Surface Observing Systems) for Stampede Pass
 * Snoqualmie Pass closure data requested from WSDOT
+* Forecast weather data scraped from weather.com to feed into model
 
 ## Modeling:
 
@@ -36,9 +37,18 @@ I tried other models and features including Random Forest and Gradient Boosting.
 Clone the repo, then run the following commands:
 * from the src folder: 
     * python initialize_db.py 
-    * Note because this is an hourly process the first data will be populated to the MongoDB after an hour
+    * Note - because this is an hourly process the first data will be populated to the MongoDB after an hour
 * from the website folder: 
     * export FLASK_APP=web_app.py
     * flask run
 
+## Future work:
+
+* Move to a hourly granularity for at least the first 3 days, with 2 separate models, to give users a better idea of the best time of day to use the pass
+* Expand to other frequently used mountain passes
+
+## Sources:
+
+* Washington State Department of Transport (WSDOT)
+* Robert Sherer's dressing for the weather project used as a reference for web scraping: [repo](https://github.com/rsherer/dressing-for-the-weather "Title")
 
