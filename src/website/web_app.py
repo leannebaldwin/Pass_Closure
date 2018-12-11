@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 
 @app.route('/', methods=['GET'])
 def render():
-    return render_template('index.html', table = output.to_html(index=False), graph=graph)
+    return render_template('index.html', table = output.to_html(index=False))
 
 def get_pred():
     """Get the predictions and data to display"""
