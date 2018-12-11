@@ -13,3 +13,9 @@ The website was created using Flask and is hosted on AWS.
 ## High level solution diagram:
 
 ![](/imgs/high_level_solution.PNG)
+
+## Data used:
+
+* Historic weather data from NOAA using the ASOS (Automated Surface Observing Systems) for Stampede Pass
+* Snoqualmie Pass closure data requested from WSDOT
+
